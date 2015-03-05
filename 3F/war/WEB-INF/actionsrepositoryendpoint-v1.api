@@ -7,7 +7,7 @@
   "defaultVersion" : false,
   "adapter" : {
     "bns" : "https://myapp.appspot.com/_ah/spi",
-    "deadline" : 10.0,
+    "deadline" : 65.0,
     "type" : "lily"
   },
   "auth" : {
@@ -27,22 +27,6 @@
   "ownerName" : "threef.com",
   "packagePath" : "datastore.Entities",
   "methods" : {
-    "actionsrepositoryendpoint.insertActionsRepository" : {
-      "path" : "actionsrepository",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.threef.datastore.Entities.ActionsRepositoryEndpoint.insertActionsRepository",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "actionsrepositoryendpoint.listActionsRepository" : {
       "path" : "actionsrepository",
       "httpMethod" : "GET",
@@ -125,10 +109,41 @@
       "response" : {
         "body" : "empty"
       }
+    },
+    "actionsrepositoryendpoint.insertActionsRepository" : {
+      "path" : "actionsrepository",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.threef.datastore.Entities.ActionsRepositoryEndpoint.insertActionsRepository",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
     }
   },
   "descriptor" : {
     "schemas" : {
+      "CollectionResponse_ActionsRepository" : {
+        "id" : "CollectionResponse_ActionsRepository",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "ActionsRepository"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
       "ActionsRepository" : {
         "id" : "ActionsRepository",
         "type" : "object",
@@ -172,32 +187,9 @@
             "$ref" : "ActionsRepository"
           }
         }
-      },
-      "CollectionResponse_ActionsRepository" : {
-        "id" : "CollectionResponse_ActionsRepository",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "ActionsRepository"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
       }
     },
     "methods" : {
-      "com.threef.datastore.Entities.ActionsRepositoryEndpoint.insertActionsRepository" : {
-        "request" : {
-          "$ref" : "ActionsRepository"
-        },
-        "response" : {
-          "$ref" : "ActionsRepository"
-        }
-      },
       "com.threef.datastore.Entities.ActionsRepositoryEndpoint.listActionsRepository" : {
         "response" : {
           "$ref" : "CollectionResponse_ActionsRepository"
@@ -217,6 +209,14 @@
         }
       },
       "com.threef.datastore.Entities.ActionsRepositoryEndpoint.removeActionsRepository" : {
+      },
+      "com.threef.datastore.Entities.ActionsRepositoryEndpoint.insertActionsRepository" : {
+        "request" : {
+          "$ref" : "ActionsRepository"
+        },
+        "response" : {
+          "$ref" : "ActionsRepository"
+        }
       }
     }
   }

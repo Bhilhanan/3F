@@ -1,0 +1,223 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://myapp.appspot.com/_ah/api",
+  "name" : "annotationendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://myapp.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "threef.com",
+  "ownerName" : "threef.com",
+  "packagePath" : "datastore.Entities",
+  "methods" : {
+    "annotationendpoint.getAnnotation" : {
+      "path" : "annotation/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.threef.datastore.Entities.AnnotationEndpoint.getAnnotation",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "annotationendpoint.insertAnnotation" : {
+      "path" : "annotation",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.threef.datastore.Entities.AnnotationEndpoint.insertAnnotation",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "annotationendpoint.listAnnotation" : {
+      "path" : "annotation",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.threef.datastore.Entities.AnnotationEndpoint.listAnnotation",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "annotationendpoint.updateAnnotation" : {
+      "path" : "annotation",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.threef.datastore.Entities.AnnotationEndpoint.updateAnnotation",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "annotationendpoint.removeAnnotation" : {
+      "path" : "annotation/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.threef.datastore.Entities.AnnotationEndpoint.removeAnnotation",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Annotation" : {
+        "id" : "Annotation",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "annotation" : {
+            "type" : "string"
+          },
+          "actionRepository" : {
+            "$ref" : "ActionsRepository"
+          }
+        }
+      },
+      "ActionsRepository" : {
+        "id" : "ActionsRepository",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "methodName" : {
+            "type" : "string"
+          },
+          "action" : {
+            "$ref" : "Action"
+          },
+          "annotationList" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Annotation"
+            }
+          }
+        }
+      },
+      "Action" : {
+        "id" : "Action",
+        "type" : "object",
+        "properties" : {
+        }
+      },
+      "CollectionResponse_Annotation" : {
+        "id" : "CollectionResponse_Annotation",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Annotation"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.threef.datastore.Entities.AnnotationEndpoint.getAnnotation" : {
+        "response" : {
+          "$ref" : "Annotation"
+        }
+      },
+      "com.threef.datastore.Entities.AnnotationEndpoint.insertAnnotation" : {
+        "request" : {
+          "$ref" : "Annotation"
+        },
+        "response" : {
+          "$ref" : "Annotation"
+        }
+      },
+      "com.threef.datastore.Entities.AnnotationEndpoint.listAnnotation" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Annotation"
+        }
+      },
+      "com.threef.datastore.Entities.AnnotationEndpoint.updateAnnotation" : {
+        "request" : {
+          "$ref" : "Annotation"
+        },
+        "response" : {
+          "$ref" : "Annotation"
+        }
+      },
+      "com.threef.datastore.Entities.AnnotationEndpoint.removeAnnotation" : {
+      }
+    }
+  }
+}
