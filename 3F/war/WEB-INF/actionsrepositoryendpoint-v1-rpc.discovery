@@ -1,0 +1,224 @@
+{
+ "kind": "discovery#rpcDescription",
+ "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/xSunqJ5CdUOauormCCsvTrKW1-w\"",
+ "discoveryVersion": "v1",
+ "id": "actionsrepositoryendpoint:v1",
+ "name": "actionsrepositoryendpoint",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "threef.com",
+ "ownerName": "threef.com",
+ "packagePath": "datastore.Entities",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rpc",
+ "rootUrl": "https://myapp.appspot.com/_ah/api/",
+ "rpcUrl": "https://myapp.appspot.com/_ah/api/rpc",
+ "rpcPath": "/_ah/api/rpc",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "Action": {
+   "id": "Action",
+   "type": "object"
+  },
+  "ActionsRepository": {
+   "id": "ActionsRepository",
+   "type": "object",
+   "properties": {
+    "action": {
+     "$ref": "Action"
+    },
+    "annotationList": {
+     "type": "array",
+     "items": {
+      "$ref": "Annotation"
+     }
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "methodName": {
+     "type": "string"
+    }
+   }
+  },
+  "Annotation": {
+   "id": "Annotation",
+   "type": "object",
+   "properties": {
+    "actionRepository": {
+     "$ref": "ActionsRepository"
+    },
+    "annotation": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    }
+   }
+  },
+  "CollectionResponse_ActionsRepository": {
+   "id": "CollectionResponse_ActionsRepository",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "ActionsRepository"
+     }
+    },
+    "nextPageToken": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "methods": {
+  "actionsrepositoryendpoint.getActionsRepository": {
+   "id": "actionsrepositoryendpoint.getActionsRepository",
+   "allowGet": true,
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "returns": {
+    "$ref": "ActionsRepository"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "actionsrepositoryendpoint.insertActionsRepository": {
+   "id": "actionsrepositoryendpoint.insertActionsRepository",
+   "parameters": {
+    "resource": {
+     "$ref": "ActionsRepository"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "ActionsRepository"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "actionsrepositoryendpoint.listActionsRepository": {
+   "id": "actionsrepositoryendpoint.listActionsRepository",
+   "allowGet": true,
+   "parameters": {
+    "cursor": {
+     "type": "string"
+    },
+    "limit": {
+     "type": "integer",
+     "format": "int32"
+    }
+   },
+   "returns": {
+    "$ref": "CollectionResponse_ActionsRepository"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "actionsrepositoryendpoint.removeActionsRepository": {
+   "id": "actionsrepositoryendpoint.removeActionsRepository",
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "actionsrepositoryendpoint.updateActionsRepository": {
+   "id": "actionsrepositoryendpoint.updateActionsRepository",
+   "parameters": {
+    "resource": {
+     "$ref": "ActionsRepository"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "ActionsRepository"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}
