@@ -1,0 +1,2 @@
+serviceClass: com.threef.client.GreetingService
+path: 0EB1B207393CC69882ECBB16779D1BAC.gwt.rpc

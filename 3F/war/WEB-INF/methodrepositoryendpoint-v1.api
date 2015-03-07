@@ -1,0 +1,261 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://golden-goblet.appspot.com/_ah/api",
+  "name" : "methodrepositoryendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://golden-goblet.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "threef.com",
+  "ownerName" : "threef.com",
+  "packagePath" : "datastore.Entities",
+  "methods" : {
+    "methodrepositoryendpoint.insertMethodRepository" : {
+      "path" : "methodrepository",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.threef.datastore.Entities.MethodRepositoryEndpoint.insertMethodRepository",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "methodrepositoryendpoint.updateMethodRepository" : {
+      "path" : "methodrepository",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.threef.datastore.Entities.MethodRepositoryEndpoint.updateMethodRepository",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "methodrepositoryendpoint.listMethodRepository" : {
+      "path" : "methodrepository",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.threef.datastore.Entities.MethodRepositoryEndpoint.listMethodRepository",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "methodrepositoryendpoint.removeMethodRepository" : {
+      "path" : "methodrepository/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.threef.datastore.Entities.MethodRepositoryEndpoint.removeMethodRepository",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "methodrepositoryendpoint.getMethodRepository" : {
+      "path" : "methodrepository/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.threef.datastore.Entities.MethodRepositoryEndpoint.getMethodRepository",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "MethodRepository" : {
+        "id" : "MethodRepository",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "methodName" : {
+            "type" : "string"
+          },
+          "action" : {
+            "type" : "string"
+          },
+          "subjects" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Subject"
+            }
+          },
+          "verbs" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Verb"
+            }
+          },
+          "objectss" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Objects"
+            }
+          }
+        }
+      },
+      "Subject" : {
+        "id" : "Subject",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "subject" : {
+            "type" : "string"
+          },
+          "methodRepositoryId" : {
+            "$ref" : "MethodRepository"
+          }
+        }
+      },
+      "Verb" : {
+        "id" : "Verb",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "methodRepositoryId" : {
+            "$ref" : "MethodRepository"
+          },
+          "subject" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Objects" : {
+        "id" : "Objects",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "objects" : {
+            "type" : "string"
+          },
+          "methodRepositoryId" : {
+            "$ref" : "MethodRepository"
+          }
+        }
+      },
+      "CollectionResponse_MethodRepository" : {
+        "id" : "CollectionResponse_MethodRepository",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "MethodRepository"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.threef.datastore.Entities.MethodRepositoryEndpoint.insertMethodRepository" : {
+        "request" : {
+          "$ref" : "MethodRepository"
+        },
+        "response" : {
+          "$ref" : "MethodRepository"
+        }
+      },
+      "com.threef.datastore.Entities.MethodRepositoryEndpoint.updateMethodRepository" : {
+        "request" : {
+          "$ref" : "MethodRepository"
+        },
+        "response" : {
+          "$ref" : "MethodRepository"
+        }
+      },
+      "com.threef.datastore.Entities.MethodRepositoryEndpoint.listMethodRepository" : {
+        "response" : {
+          "$ref" : "CollectionResponse_MethodRepository"
+        }
+      },
+      "com.threef.datastore.Entities.MethodRepositoryEndpoint.removeMethodRepository" : {
+      },
+      "com.threef.datastore.Entities.MethodRepositoryEndpoint.getMethodRepository" : {
+        "response" : {
+          "$ref" : "MethodRepository"
+        }
+      }
+    }
+  }
+}

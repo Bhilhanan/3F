@@ -1,0 +1,3 @@
+# Module _f
+# RPC service class, partial path of RPC policy file
+com.threef.client.GreetingService, 0EB1B207393CC69882ECBB16779D1BAC.gwt.rpc

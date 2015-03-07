@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/xSunqJ5CdUOauormCCsvTrKW1-w\"",
+ "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/PXHncQErecA9cIrxmqU7YgEucBU\"",
  "discoveryVersion": "v1",
  "id": "actionsrepositoryendpoint:v1",
  "name": "actionsrepositoryendpoint",
@@ -14,9 +14,9 @@
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
  "protocol": "rest",
- "baseUrl": "https://myapp.appspot.com/_ah/api/actionsrepositoryendpoint/v1/",
+ "baseUrl": "https://golden-goblet.appspot.com/_ah/api/actionsrepositoryendpoint/v1/",
  "basePath": "/_ah/api/actionsrepositoryendpoint/v1/",
- "rootUrl": "https://myapp.appspot.com/_ah/api/",
+ "rootUrl": "https://golden-goblet.appspot.com/_ah/api/",
  "servicePath": "actionsrepositoryendpoint/v1/",
  "batchPath": "batch",
  "parameters": {
@@ -85,34 +85,11 @@
     "action": {
      "$ref": "Action"
     },
-    "annotationList": {
-     "type": "array",
-     "items": {
-      "$ref": "Annotation"
-     }
-    },
     "id": {
-     "type": "string",
-     "format": "int64"
+     "$ref": "Key"
     },
     "methodName": {
      "type": "string"
-    }
-   }
-  },
-  "Annotation": {
-   "id": "Annotation",
-   "type": "object",
-   "properties": {
-    "actionRepository": {
-     "$ref": "ActionsRepository"
-    },
-    "annotation": {
-     "type": "string"
-    },
-    "id": {
-     "type": "string",
-     "format": "int64"
     }
    }
   },
@@ -128,6 +105,34 @@
     },
     "nextPageToken": {
      "type": "string"
+    }
+   }
+  },
+  "Key": {
+   "id": "Key",
+   "type": "object",
+   "properties": {
+    "appId": {
+     "type": "string"
+    },
+    "complete": {
+     "type": "boolean"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "kind": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "namespace": {
+     "type": "string"
+    },
+    "parent": {
+     "$ref": "Key"
     }
    }
   }

@@ -1,0 +1,261 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://golden-goblet.appspot.com/_ah/api",
+  "name" : "subjectendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://golden-goblet.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "threef.com",
+  "ownerName" : "threef.com",
+  "packagePath" : "datastore.Entities",
+  "methods" : {
+    "subjectendpoint.updateSubject" : {
+      "path" : "subject",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.threef.datastore.Entities.SubjectEndpoint.updateSubject",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "subjectendpoint.insertSubject" : {
+      "path" : "subject",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.threef.datastore.Entities.SubjectEndpoint.insertSubject",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "subjectendpoint.removeSubject" : {
+      "path" : "subject/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.threef.datastore.Entities.SubjectEndpoint.removeSubject",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "subjectendpoint.listSubject" : {
+      "path" : "subject",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.threef.datastore.Entities.SubjectEndpoint.listSubject",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "subjectendpoint.getSubject" : {
+      "path" : "subject/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.threef.datastore.Entities.SubjectEndpoint.getSubject",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Subject" : {
+        "id" : "Subject",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "subject" : {
+            "type" : "string"
+          },
+          "methodRepositoryId" : {
+            "$ref" : "MethodRepository"
+          }
+        }
+      },
+      "MethodRepository" : {
+        "id" : "MethodRepository",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "methodName" : {
+            "type" : "string"
+          },
+          "action" : {
+            "type" : "string"
+          },
+          "subjects" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Subject"
+            }
+          },
+          "verbs" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Verb"
+            }
+          },
+          "objectss" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Objects"
+            }
+          }
+        }
+      },
+      "Verb" : {
+        "id" : "Verb",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "methodRepositoryId" : {
+            "$ref" : "MethodRepository"
+          },
+          "subject" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Objects" : {
+        "id" : "Objects",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "objects" : {
+            "type" : "string"
+          },
+          "methodRepositoryId" : {
+            "$ref" : "MethodRepository"
+          }
+        }
+      },
+      "CollectionResponse_Subject" : {
+        "id" : "CollectionResponse_Subject",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Subject"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.threef.datastore.Entities.SubjectEndpoint.updateSubject" : {
+        "request" : {
+          "$ref" : "Subject"
+        },
+        "response" : {
+          "$ref" : "Subject"
+        }
+      },
+      "com.threef.datastore.Entities.SubjectEndpoint.insertSubject" : {
+        "request" : {
+          "$ref" : "Subject"
+        },
+        "response" : {
+          "$ref" : "Subject"
+        }
+      },
+      "com.threef.datastore.Entities.SubjectEndpoint.removeSubject" : {
+      },
+      "com.threef.datastore.Entities.SubjectEndpoint.listSubject" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Subject"
+        }
+      },
+      "com.threef.datastore.Entities.SubjectEndpoint.getSubject" : {
+        "response" : {
+          "$ref" : "Subject"
+        }
+      }
+    }
+  }
+}

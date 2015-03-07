@@ -21,7 +21,7 @@
     <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
     <init-param>
       <param-name>services</param-name>
-      <param-value>com.threef.datastore.Entities.ActionsRepositoryEndpoint,com.threef.datastore.Entities.AnnotationEndpoint</param-value>
+      <param-value>com.threef.datastore.Entities.MethodRepositoryEndpoint,com.threef.datastore.Entities.ObjectsEndpoint,com.threef.datastore.Entities.SubjectEndpoint,com.threef.datastore.Entities.VerbEndpoint</param-value>
     </init-param>
   </servlet>
 
